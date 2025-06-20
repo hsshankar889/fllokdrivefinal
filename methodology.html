@@ -185,7 +185,7 @@
         .methodology-section {
             display: flex; /* Changed from grid to flex for simplicity */
             justify-content: space-around; /* Distribute items */
-            flex-wrap: wrap; /* Changed to allow wrapping */
+            flex-wrap: nowrap; /* Prevent wrapping */
             gap: 32px; /* gap-8 */
             margin-bottom: 48px; /* mb-12 */
             background-color: transparent;
@@ -289,15 +289,8 @@
             padding: 16px; /* p-4 */
         }
 
-        /* --- Training Section --- */
-        .training-section {
-            background-color: var(--light-bg); /* Use light background for this section */
-            padding: 32px; /* p-8 */
-            border-radius: 16px; /* rounded-2xl */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-xl */
-            margin-bottom: 48px; /* mb-12 */
-        }
-        .training-section h2 {
+        /* --- Section Heading Pattern (reused for Training and PDCA) --- */
+        .section-heading {
             color: var(--text-primary); /* text-gray-900 */
             font-size: 36px; /* text-4xl */
             font-weight: 800; /* font-extrabold */
@@ -306,7 +299,7 @@
             position: relative;
             padding-bottom: 16px; /* pb-4 */
         }
-        .training-section h2::after {
+        .section-heading::after {
             content: '';
             position: absolute;
             left: 50%;
@@ -317,10 +310,19 @@
             background-color: var(--primary-color); /* Navy Blue underline */
             border-radius: 9999px; /* rounded-full */
         }
+
+
+        /* --- Training Section --- */
+        .training-section {
+            background-color: var(--light-bg); /* Use light background for this section */
+            padding: 32px; /* p-8 */
+            border-radius: 16px; /* rounded-2xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-xl */
+            margin-bottom: 48px; /* mb-12 */
+        }
         .training-section .grid {
             display: flex; /* Changed from grid for fixed layout */
             justify-content: space-between;
-            flex-wrap: wrap; /* Changed to allow wrapping */
             gap: 24px; /* gap-6 */
             margin-top: 32px; /* mt-8 */
         }
@@ -349,11 +351,66 @@
             font-size: 14px; /* text-sm */
         }
 
+        /* --- PDCA Section Styles --- */
+        .pdca-section {
+            background-color: white; /* White background for this section */
+            padding: 40px 32px; /* py-10 px-8 */
+            border-radius: 16px; /* rounded-2xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* shadow-xl */
+            margin-bottom: 48px; /* mb-12 */
+            text-align: center; /* Center intro text */
+        }
+        .pdca-section .intro-text {
+            max-width: 800px;
+            margin: 0 auto 40px; /* mx-auto mb-10 */
+            color: var(--text-secondary);
+            font-size: 18px; /* text-lg */
+            line-height: 1.75; /* leading-relaxed */
+        }
+        .pdca-section .pdca-grid {
+            display: flex; /* Changed from grid to flex for simplicity */
+            justify-content: center; /* Center items */
+            flex-wrap: wrap; /* Allow wrapping */
+            gap: 24px; /* gap-6 */
+        }
+        .pdca-card {
+            background-color: #f0f8ff; /* Light blue background for PDCA cards */
+            padding: 24px; /* p-6 */
+            border-radius: 12px; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            transition: all 0.3s ease;
+            width: 280px; /* Fixed width for PDCA cards */
+            border: 1px solid var(--primary-color); /* Primary color border */
+            text-align: left; /* Align text within card to left */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align content to start */
+        }
+        .pdca-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.15), 0 6px 8px -3px rgba(0, 0, 0, 0.08);
+            background-color: #e0f2fe; /* Lighter blue on hover */
+        }
+        .pdca-card .icon {
+            font-size: 40px; /* text-4xl */
+            color: var(--primary-color);
+            margin-bottom: 16px; /* mb-4 */
+        }
+        .pdca-card h3 {
+            font-size: 24px; /* text-2xl */
+            font-weight: 700; /* font-bold */
+            color: var(--primary-dark); /* Darker blue for heading */
+            margin-bottom: 12px; /* mb-3 */
+        }
+        .pdca-card p {
+            color: var(--text-primary); /* text-gray-800 */
+            line-height: 1.6;
+        }
+
         /* --- Image Gallery --- */
         .image-gallery {
             display: flex; /* Changed from grid for fixed layout */
             justify-content: space-between;
-            flex-wrap: wrap; /* Changed to allow wrapping */
             gap: 20px; /* gap-5 */
             margin-top: 40px; /* mt-10 */
         }
@@ -426,12 +483,12 @@
 
         /* --- Animation Classes --- */
         /* Initial state and transition properties for elements before animation */
-        header, .page-title-banner, .methodology-section, .media-container-video, .training-section, .fixed-action-btn, footer {
+        header, .page-title-banner, .methodology-section, .media-container-video, .training-section, .pdca-section, .fixed-action-btn, footer {
             opacity: 0;
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         header { transform: translateY(-100%); }
-        .page-title-banner, .methodology-section, .media-container-video, .training-section { transform: translateY(20px); }
+        .page-title-banner, .methodology-section, .media-container-video, .training-section, .pdca-section { transform: translateY(20px); }
         .fixed-action-btn { transform: scale(0); }
 
         /* Footer initial state for animation */
@@ -519,18 +576,18 @@
 
         /* Responsive Design: Tablet and Mobile Adjustments */
         @media (max-width: 1200px) {
-            .methodology-section, .training-section .grid, .image-gallery, footer .footer-content {
+            .methodology-section, .training-section .grid, .image-gallery, .pdca-section .pdca-grid, footer .footer-content {
                 flex-wrap: wrap; /* Allow wrapping on smaller screens */
                 justify-content: center; /* Center items when wrapped */
             }
 
-            .feature-card, .training-section .bg-gray-100, .image-gallery > div, footer .footer-col {
+            .feature-card, .training-section .bg-gray-100, .image-gallery > div, .pdca-card, footer .footer-col {
                 width: 100%; /* Full width on smaller screens */
                 max-width: 450px; /* Max width for cards/columns to prevent them from being too wide on tablet */
                 margin-left: auto;
                 margin-right: auto;
             }
-            .methodology-section, .training-section .grid, .image-gallery, footer .footer-content {
+            .methodology-section, .training-section .grid, .image-gallery, .pdca-section .pdca-grid, footer .footer-content {
                 gap: 24px; /* Reduce gap on smaller screens */
             }
         }
@@ -562,18 +619,18 @@
             .page-title-banner p {
                 font-size: 20px; /* text-xl */
             }
-            .methodology-section, .training-section .grid, .image-gallery, footer .footer-content {
+            .methodology-section, .training-section .grid, .image-gallery, .pdca-section .pdca-grid, footer .footer-content {
                 padding: 0 8px; /* Less padding on very small screens */
             }
-            .feature-card, .training-section .bg-gray-100, .image-gallery > div, footer .footer-col {
+            .feature-card, .training-section .bg-gray-100, .image-gallery > div, .pdca-card, footer .footer-col {
                 max-width: 90%; /* Adjust max-width for very small screens */
             }
             .media-container-video .bg-gray-800 {
                 width: 90%; /* Make video container responsive */
                 height: 300px; /* Adjust height */
             }
-            .training-section h2 {
-                font-size: 28px; /* Adjust heading size */
+            .section-heading { /* Apply to all section headings */
+                font-size: 28px;
             }
             .fixed-action-btn {
                 bottom: 20px;
@@ -584,6 +641,12 @@
                 width: 48px;
                 height: 48px;
                 font-size: 18px;
+            }
+            .pdca-section .intro-text {
+                font-size: 16px;
+            }
+            .pdca-card h3 {
+                font-size: 20px;
             }
         }
 
@@ -604,7 +667,7 @@
                 padding-left: 24px;
                 font-size: 15px;
             }
-            .training-section h2 {
+            .section-heading {
                 font-size: 24px;
             }
         }
@@ -614,14 +677,16 @@
 <body class="no-scroll">
     <div id="preloader">
         <div class="flex-col">
-            <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo"> <div class="spinner"></div>
+            <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo">
+            <div class="spinner"></div>
         </div>
     </div>
 
     <header>
         <div class="container">
             <a href="index.html">
-                <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo"> </a>
+                <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo">
+            </a>
             <nav>
                 <ul>
                     <li><a href="./index.html"><i class="fas fa-home"></i> <span>Home</span></a></li>
@@ -684,31 +749,45 @@
                         <p class="italic">Value-based selling increases deal size by 23% and reduces sales cycles by 19%.</p>
                     </div>
                 </div>
-
-                <div class="feature-card">
-                    <div class="card-header">PDCA Cycle</div>
-                    <div class="card-body">
-                        <p>A powerful iterative four-step management method used for the control and continuous improvement of processes and products:</p>
-                        <ul>
-                            <li><i class="fas fa-lightbulb"></i> <strong>Plan</strong> - Identify the problem or opportunity, analyze root causes, and plan solutions.</li>
-                            <li><i class="fas fa-cogs"></i> <strong>Do</strong> - Implement the planned changes on a small scale, collecting data and observations.</li>
-                            <li><i class="fas fa-chart-bar"></i> <strong>Check</strong> - Analyze the results against the plan, evaluate effectiveness, and identify lessons learned.</li>
-                            <li><i class="fas fa-medal"></i> <strong>Act</strong> - Standardize successful changes or refine the plan and repeat the cycle for further improvements.</li>
-                        </ul>
-                        <p class="italic">PDCA cycle implementation can lead to significant gains in process efficiency and quality over time.</p>
-                    </div>
-                </div>
-                </section>
+            </section>
 
             <div class="media-container-video">
                 <div class="bg-gray-800">
-                    <video src="./istockphoto-1036766612-640_adpp_is.mp4" autoplay loop muted playsinline type="video/mp4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"></video>
+                    <video src="./istockphoto-1036766612-640_adpp_is.mp4" autoplay loop muted playsinline type="video/mp4"></video>
                     <div class="text-gray-300" style="display:none;">Engaging Sales Video coming soon!</div>
                 </div>
             </div>
 
+            <section class="pdca-section">
+                <h2 class="section-heading">Continuous Improvement with PDCA</h2>
+                <p class="intro-text">
+                    The Plan-Do-Check-Act (PDCA) cycle, also known as the Deming Cycle, is a systematic series of steps for gaining valuable learning and knowledge for the continual improvement of a product, process, or service. We apply this iterative four-step management method to continuously improve our sales strategies and client outcomes.
+                </p>
+                <div class="pdca-grid">
+                    <div class="pdca-card">
+                        <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h3>Plan</h3>
+                        <p>Define the problem or opportunity, set objectives, and outline the actions required to achieve the desired outcome. This includes identifying resources and metrics for success.</p>
+                    </div>
+                    <div class="pdca-card">
+                        <div class="icon"><i class="fas fa-person-digging"></i></div>
+                        <h3>Do</h3>
+                        <p>Implement the plan on a small scale or in a controlled environment. Collect data and observe the process, avoiding large-scale rollout before evaluation.</p>
+                    </div>
+                    <div class="pdca-card">
+                        <div class="icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                        <h3>Check</h3>
+                        <p>Analyze the results against the objectives set in the 'Plan' phase. Evaluate the effectiveness of the changes, identify deviations, and understand the causes of success or failure.</p>
+                    </div>
+                    <div class="pdca-card">
+                        <div class="icon"><i class="fas fa-arrows-rotate"></i></div>
+                        <h3>Act</h3>
+                        <p>Based on the findings from the 'Check' phase, standardize successful changes or modify the plan and repeat the cycle to address new insights or unresolved issues.</p>
+                    </div>
+                </div>
+            </section>
             <section class="training-section">
-                <h2>Hands-on Training & Skill Development</h2>
+                <h2 class="section-heading">Hands-on Training & Skill Development</h2>
                 <div class="grid">
                     <div class="bg-gray-100">
                         <h3>1. Role-Playing Simulations</h3>
@@ -746,7 +825,7 @@
 
             <div class="media-container-video">
                 <div class="bg-gray-800">
-                    <video src="./istockphoto-1036872804-640_adpp_is.mp4" autoplay loop muted playsinline controls type="video/mp4" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"></video>
+                    <video src="./istockphoto-1036872804-640_adpp_is.mp4" autoplay loop muted playsinline controls type="video/mp4"></video>
                     <div class="text-gray-300" style="display:none;">More video content coming soon!</div>
                 </div>
             </div>
@@ -768,68 +847,80 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col">
-                    <a href="index.html" class="inline-block mb-4 text-3xl font-extrabold text-white">
-                        <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo" class="footer-logo">
-                    </a>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">Empowering sales teams with cutting-edge methodologies and practical training to achieve unparalleled growth.</p>
+                <div class="text-center md:text-left">
+                    <a href="index.html" class="text-3xl font-extrabold text-[var(--light-bg-color)] hover:text-[var(--light-bg-color)]"><span style="color: white;">Folkdrive</span></a>
+                    <p class="mt-4 text-sm leading-relaxed text-[var(--light-bg-color)]">Empowering Sales <br>Teams unlocks their full potential, enabling them to drive results and exceed targets.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
+                    <h4>About Folkdrive</h4>
                     <ul>
-                        <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="./services.html"><i class="fas fa-handshake"></i> Services</a></li>
-                        <li><a href="./methodology.html"><i class="fas fa-rocket"></i> Methodology</a></li>
-                        <li><a href="./about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                        <li><a href="./contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li><a href="./about.html"><i class="fas fa-info-circle"></i> Our Story</a></li>
+                        <li><a href="./methodology.html"><i class="fas fa-gear"></i> Our Approach</a></li>
+                        <li><a href="./services.html"><i class="fas fa-briefcase"></i> Services Offered</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-col">
-                    <h4>Our Methodologies</h4>
-                    <ul>
-                        <li><a href="./methodology.html#spin-selling"><i class="fas fa-bullseye"></i> SPIN Selling</a></li>
-                        <li><a href="./methodology.html#challenger-sale"><i class="fas fa-chess-knight"></i> Challenger Sale</a></li>
-                        <li><a href="./methodology.html#value-based-selling"><i class="fas fa-hand-holding-dollar"></i> Value-Based Selling</a></li>
-                        <li><a href="./methodology.html#pdca-cycle"><i class="fas fa-recycle"></i> PDCA Cycle</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
+                    <h4>Connect With Us</h4>
                     <ul>
                         <li><a href="mailto:info@folkdrive.com"><i class="fas fa-envelope"></i> info@folkdrive.com</a></li>
                         <li><a href="tel:+919916245531"><i class="fas fa-phone"></i> +91 99162 45531</a></li>
-                        <li><a href="https://maps.app.goo.gl/YourLocation" target="_blank"><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka, India</a></li>
+                        <li><a href="https://wa.me/919916245531" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 FolkDrive. All rights reserved.</p>
+                <p>&copy; 2025 Folkdrive. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("DOMContentLoaded", function() {
             const preloader = document.getElementById('preloader');
             const body = document.body;
+            const header = document.querySelector('header');
+            // Updated selector to include the new PDCA section
+            const mainContentSections = document.querySelectorAll('.page-title-banner, .methodology-section, .media-container-video, .pdca-section, .training-section');
+            const fixedActionBtn = document.querySelector('.fixed-action-btn');
+            const footer = document.querySelector('footer');
 
+            // Simulate loading time for preloader
             setTimeout(() => {
                 preloader.style.opacity = '0';
-                setTimeout(() => {
+                preloader.addEventListener('transitionend', () => {
                     preloader.style.display = 'none';
-                    body.classList.remove('no-scroll');
+                    body.classList.remove('no-scroll'); // Re-enable scrolling after preloader hides
 
-                    // Apply animation classes after preloader disappears
-                    document.querySelector('header').classList.add('header-active');
-                    document.querySelector('.page-title-banner').classList.add('content-active');
-                    document.querySelector('.methodology-section').classList.add('content-active');
-                    document.querySelector('.media-container-video').classList.add('content-active');
-                    document.querySelector('.training-section').classList.add('content-active');
-                    document.querySelector('footer').classList.add('footer-active');
-                    document.querySelector('.fixed-action-btn').classList.add('fixed-btn-active');
-                }, 700); // Matches the opacity transition duration
-            }, 1000); // Show preloader for at least 1 second
+                    // Animate in content after preloader is gone
+                    header.classList.add('header-active');
+                    fixedActionBtn.classList.add('fixed-btn-active');
+                    footer.classList.add('footer-active');
 
+                    // Use Intersection Observer for main content sections
+                    const observerOptions = {
+                        root: null, // viewport
+                        rootMargin: '0px',
+                        threshold: 0.1 // 10% of element visible
+                    };
+
+                    const observer = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('content-active');
+                                observer.unobserve(entry.target); // Stop observing once animated
+                            }
+                        });
+                    }, observerOptions);
+
+                    mainContentSections.forEach(section => {
+                        observer.observe(section);
+                    });
+
+                }, { once: true });
+            }, 1000); // Preloader visible for 1 second
+
+            // Scroll to top/bottom functionality
             const scrollToTopBtn = document.getElementById('scroll-to-top');
             const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
 
@@ -847,26 +938,25 @@
                 });
             });
 
+            // Toggle scroll to top/bottom button visibility
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 200) {
+                if (window.scrollY > 200) { // Show after scrolling 200px
                     scrollToTopBtn.style.display = 'flex';
                 } else {
                     scrollToTopBtn.style.display = 'none';
                 }
 
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                    scrollToBottomBtn.style.display = 'none';
-                } else {
+                // Show scroll-to-bottom only if not near the very end
+                const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50; // 50px buffer
+                if (!isAtBottom) {
                     scrollToBottomBtn.style.display = 'flex';
+                } else {
+                    scrollToBottomBtn.style.display = 'none';
                 }
             });
 
-            // Initial check for scroll buttons display
-            if (window.scrollY > 200) {
-                scrollToTopBtn.style.display = 'flex';
-            } else {
-                scrollToTopBtn.style.display = 'none';
-            }
+            // Initial check for button visibility
+            window.dispatchEvent(new Event('scroll'));
         });
     </script>
 </body>

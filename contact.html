@@ -132,9 +132,14 @@
         }
         main {
             flex-grow: 1;
-            /* Added padding to increase height of main content area, adjusted to accommodate fixed header */
-            padding-top: 72px; /* Adjusted top padding to offset fixed header */
+            padding-top: 104px; /* For mobile, to accommodate stacked header */
             padding-bottom: 50px; /* Added bottom padding for consistent spacing */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            main {
+                padding-top: 80px; /* For desktop */
+            }
         }
 
         /* Header specific styling */
@@ -217,7 +222,7 @@
     <header class="bg-[var(--light-bg-color)] text-[var(--text-color)] shadow-lg fixed top-0 left-0 w-full z-50">
         <div class="container header-container">
             <a href="index.html" class="mb-4 md:mb-0">
-                <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo" class="rounded-lg h-12 w-auto" onerror="this.src='https://placehold.co/48x48/1A2B42/FFFFFF?text=Logo';">
+                <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo" class="rounded-lg h-14 w-auto" onerror="this.src='https://placehold.co/48x48/1A2B42/FFFFFF?text=Logo';">
             </a>
             <nav>
                 <ul class="flex flex-wrap justify-center md:space-x-6 space-x-2 text-sm md:text-base">

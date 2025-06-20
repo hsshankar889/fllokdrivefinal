@@ -185,7 +185,7 @@
         .methodology-section {
             display: flex; /* Changed from grid to flex for simplicity */
             justify-content: space-around; /* Distribute items */
-            flex-wrap: nowrap; /* Prevent wrapping */
+            flex-wrap: wrap; /* Changed to allow wrapping */
             gap: 32px; /* gap-8 */
             margin-bottom: 48px; /* mb-12 */
             background-color: transparent;
@@ -320,6 +320,7 @@
         .training-section .grid {
             display: flex; /* Changed from grid for fixed layout */
             justify-content: space-between;
+            flex-wrap: wrap; /* Changed to allow wrapping */
             gap: 24px; /* gap-6 */
             margin-top: 32px; /* mt-8 */
         }
@@ -352,6 +353,7 @@
         .image-gallery {
             display: flex; /* Changed from grid for fixed layout */
             justify-content: space-between;
+            flex-wrap: wrap; /* Changed to allow wrapping */
             gap: 20px; /* gap-5 */
             margin-top: 40px; /* mt-10 */
         }
@@ -682,7 +684,21 @@
                         <p class="italic">Value-based selling increases deal size by 23% and reduces sales cycles by 19%.</p>
                     </div>
                 </div>
-            </section>
+
+                <div class="feature-card">
+                    <div class="card-header">PDCA Cycle</div>
+                    <div class="card-body">
+                        <p>A powerful iterative four-step management method used for the control and continuous improvement of processes and products:</p>
+                        <ul>
+                            <li><i class="fas fa-lightbulb"></i> <strong>Plan</strong> - Identify the problem or opportunity, analyze root causes, and plan solutions.</li>
+                            <li><i class="fas fa-cogs"></i> <strong>Do</strong> - Implement the planned changes on a small scale, collecting data and observations.</li>
+                            <li><i class="fas fa-chart-bar"></i> <strong>Check</strong> - Analyze the results against the plan, evaluate effectiveness, and identify lessons learned.</li>
+                            <li><i class="fas fa-medal"></i> <strong>Act</strong> - Standardize successful changes or refine the plan and repeat the cycle for further improvements.</li>
+                        </ul>
+                        <p class="italic">PDCA cycle implementation can lead to significant gains in process efficiency and quality over time.</p>
+                    </div>
+                </div>
+                </section>
 
             <div class="media-container-video">
                 <div class="bg-gray-800">
@@ -753,124 +769,104 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <a href="index.html" class="inline-block mb-4 text-3xl font-extrabold text-white hover:text-gray-300 transition-colors duration-300">
-                 <span style="color: var(--border-color);">Folkdrive</span>
+                    <a href="index.html" class="inline-block mb-4 text-3xl font-extrabold text-white">
+                        <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo" class="footer-logo">
                     </a>
-                    <p class="text-sm leading-relaxed text-gray-400">Driving sales excellence and process efficiency for sustainable growth.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">Empowering sales teams with cutting-edge methodologies and practical training to achieve unparalleled growth.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Company</h4>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="./about.html"><i class="fas fa-info-circle"></i> <span>About Us</span></a></li>
-                        <li><a href="./services.html"><i class="fas fa-handshake"></i> <span>Services</span></a></li>
-                        <li><a href="./methodology.html" style="color: white; font-weight: 600;"><i class="fas fa-rocket"></i> <span>Methodology</span></a></li>
+                        <li><a href="./index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="./services.html"><i class="fas fa-handshake"></i> Services</a></li>
+                        <li><a href="./methodology.html"><i class="fas fa-rocket"></i> Methodology</a></li>
+                        <li><a href="./about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="./contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Contact</h4>
+                    <h4>Our Methodologies</h4>
                     <ul>
-                        <li><a href="mailto:info@folkdrive.com"><i class="fas fa-envelope"></i> <span>info@folkdrive.com</span></a></li>
-                        <li><a href="tel:+919916245531"><i class="fas fa-phone"></i> <span>+919916245531</span></a></li>
-                        <li><a href="./contact.html"><i class="fas fa-address-book"></i> <span>Contact Form</span></a></li>
+                        <li><a href="./methodology.html#spin-selling"><i class="fas fa-bullseye"></i> SPIN Selling</a></li>
+                        <li><a href="./methodology.html#challenger-sale"><i class="fas fa-chess-knight"></i> Challenger Sale</a></li>
+                        <li><a href="./methodology.html#value-based-selling"><i class="fas fa-hand-holding-dollar"></i> Value-Based Selling</a></li>
+                        <li><a href="./methodology.html#pdca-cycle"><i class="fas fa-recycle"></i> PDCA Cycle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="mailto:info@folkdrive.com"><i class="fas fa-envelope"></i> info@folkdrive.com</a></li>
+                        <li><a href="tel:+919916245531"><i class="fas fa-phone"></i> +91 99162 45531</a></li>
+                        <li><a href="https://maps.app.goo.gl/YourLocation" target="_blank"><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka, India</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> Folkdrive. All Rights Reserved.</p>
+                <p>&copy; 2025 FolkDrive. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Elements ---
-            const scrollToTopBtn = document.getElementById('scroll-to-top');
-            const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
             const preloader = document.getElementById('preloader');
             const body = document.body;
 
-            // --- Scroll Button Logic ---
-            const handleScrollButtons = () => {
-                const scrollY = window.scrollY;
-                const pageHeight = document.body.offsetHeight;
-                const viewportHeight = window.innerHeight;
-
-                // Displays buttons based on scroll position, adapting to viewport size
-                scrollToTopBtn.style.display = scrollY > 300 ? 'flex' : 'none';
-                // Show scroll to bottom button only if there's content below the current viewport
-                scrollToBottomBtn.style.display = (pageHeight - (scrollY + viewportHeight) > 300) ? 'flex' : 'none';
-            };
-
-            // Event listeners for scroll buttons
-            scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-            scrollToBottomBtn.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
-            window.addEventListener('scroll', handleScrollButtons);
-
-            // Initial call to set button visibility on load
-            handleScrollButtons();
-
-            // --- Page Load & Animation Logic ---
-            const initPage = () => {
-                document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-                // Fade out preloader and remove no-scroll class from body
+            setTimeout(() => {
+                preloader.style.opacity = '0';
                 setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    preloader.addEventListener('transitionend', () => {
-                        preloader.style.display = 'none';
-                        body.classList.remove('no-scroll');
-                        // Trigger animations after preloader is gone
-                        animatePageElements();
-                    }, { once: true });
-                }, 500); // Slight delay for preloader animation to be noticeable
+                    preloader.style.display = 'none';
+                    body.classList.remove('no-scroll');
 
-                // Handle video errors (for external video URLs that might fail)
-                document.querySelectorAll('video').forEach(video => {
-                    video.addEventListener('error', function() {
-                        this.style.display = 'none';
-                        this.nextElementSibling.style.display = 'block'; // Show fallback text
-                    });
+                    // Apply animation classes after preloader disappears
+                    document.querySelector('header').classList.add('header-active');
+                    document.querySelector('.page-title-banner').classList.add('content-active');
+                    document.querySelector('.methodology-section').classList.add('content-active');
+                    document.querySelector('.media-container-video').classList.add('content-active');
+                    document.querySelector('.training-section').classList.add('content-active');
+                    document.querySelector('footer').classList.add('footer-active');
+                    document.querySelector('.fixed-action-btn').classList.add('fixed-btn-active');
+                }, 700); // Matches the opacity transition duration
+            }, 1000); // Show preloader for at least 1 second
+
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
+            });
 
-                // Handle image errors (for external image URLs that might fail)
-                document.querySelectorAll('.image-gallery img').forEach(img => {
-                    img.addEventListener('error', function() {
-                        this.onerror = null; // Prevent infinite loops
-                        this.src = this.getAttribute('onerror').match(/this\.src='([^']*)'/)[1]; // Extract fallback src
-                        this.style.objectFit = 'contain'; // Adjust object-fit for placeholder text
-                        this.style.backgroundColor = '#e5e7eb'; // Add a background for the placeholder
-                    });
+            scrollToBottomBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
                 });
-            };
+            });
 
-            const animatePageElements = () => {
-                // Header animation with a small delay
-                const header = document.querySelector('header');
-                if (header) {
-                    setTimeout(() => header.classList.add('header-active'), 100);
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    scrollToTopBtn.style.display = 'flex';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
                 }
 
-                // Section animations with staggered delays
-                const sections = document.querySelectorAll('.page-title-banner, .methodology-section, .media-container-video, .training-section');
-                sections.forEach((section, index) => {
-                    setTimeout(() => section.classList.add('content-active'), 300 + index * 150); // Staggered reveal
-                });
-
-                // Footer animation (added similar to other sections)
-                const footer = document.querySelector('footer');
-                if (footer) {
-                    setTimeout(() => footer.classList.add('footer-active'), 300 + sections.length * 150); // Appear after content
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    scrollToBottomBtn.style.display = 'none';
+                } else {
+                    scrollToBottomBtn.style.display = 'flex';
                 }
+            });
 
-                // Fixed action buttons animation
-                const fixedActionBtn = document.querySelector('.fixed-action-btn');
-                if (fixedActionBtn) {
-                    setTimeout(() => fixedActionBtn.classList.add('fixed-btn-active'), 800); // Appear after content
-                }
-            };
-
-            // Initialize the page once DOM is ready
-            initPage();
+            // Initial check for scroll buttons display
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
         });
     </script>
 </body>

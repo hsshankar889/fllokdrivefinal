@@ -3,383 +3,649 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folkdrive | Sales & Process Efficiency</title>
-    
-    <!-- Tailwind CSS -->
+    <title>About Us - GreenInfinity</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom Styles */
         body {
             font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        /* Navbar specific styles for single line and left alignment */
+        @media (min-width: 768px) {
+            .navbar-menu {
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                width: auto;
+                flex-grow: 1;
+                margin-left: 1rem;
+            }
+
+            .navbar-menu .nav-item {
+                padding: 0.5rem 1rem;
+                border-right: 1px solid #e5e7eb;
+            }
+
+            .navbar-menu .nav-item:last-child {
+                border-right: none;
+            }
         }
 
-        /* --- Preloader Styles --- */
-        #preloader {
-            transition: opacity 0.7s ease-in-out;
+        /* Footer specific styles */
+        .footer-list-header {
+            font-weight: 500;
+            color: #F87171;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
         }
-        .spinner {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 8px solid #f3f3f3; /* Light grey */
-            border-top: 8px solid #3b82f6; /* Blue-500 */
-            animation: spin 1.5s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .footer-list-item {
+            margin-bottom: 0.25rem;
         }
 
-        /* --- Animations --- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        /* General Section Styling for consistency */
+        section {
+            padding: 4rem 1.5rem;
         }
-        .fade-in {
-             opacity: 0;
-             transition: opacity 1s ease-out;
-        }
-        .active-animation {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .active-fade-in {
-            opacity: 1;
-        }
-        
-        /* --- Image Slider Styles --- */
-        .slide-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-            border-radius: 1rem; /* rounded-xl */
-        }
-        .slide-image.active {
-            opacity: 1;
-        }
-        .dot.active {
-            background-color: #3b82f6; /* bg-blue-500 */
-            transform: scale(1.25);
+        .section-header {
+            text-align: center;
+            font-size: 2.25rem; /* 3xl */
+            font-weight: 700; /* bold */
+            color: #1a202c; /* gray-800 */
+            margin-bottom: 2.5rem; /* mb-10 */
         }
 
-        /* --- Fixed Action Button Styles --- */
-        .fixed-action-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+        /* Our Core Values Specific Styles */
+        .core-value-card {
+            border: 2px solid #22C55E; /* Green-500 border */
+            min-height: 250px; /* Ensure cards have a consistent height */
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            z-index: 40; /* Lower than header */
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start; /* Align text to the left */
+            text-align: left; /* Align text to the left */
+            padding: 2rem;
         }
-        .fixed-action-btn.active-animation {
-             opacity: 1;
-             transform: scale(1);
+        .core-value-card svg {
+            color: #22C55E; /* Green-500 for icons */
+            margin-bottom: 1rem; /* Space below icon */
         }
-        .action-button {
-            width: 3.5rem; /* w-14 */
-            height: 3.5rem; /* h-14 */
-            border-radius: 9999px; /* rounded-full */
+
+        /* Greenply Journey Horizontal Scroll Slider */
+        .journey-slider-wrapper {
+            position: relative;
+            padding: 2rem 0; /* Add padding for arrows not to overlap content */
+            background-color: #1a202c; /* Dark background for the whole section */
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .journey-slider-container {
             display: flex;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+            padding: 1rem 0; /* Padding inside for consistent card appearance */
+            gap: 1.5rem; /* Space between cards */
+            padding-left: 2rem; /* Initial padding on the left */
+            padding-right: 2rem; /* Initial padding on the right */
+        }
+
+        .journey-slider-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .journey-slide {
+            flex-shrink: 0; /* Prevent cards from shrinking */
+            width: 300px; /* Fixed width for each card */
+            background-color: white;
+            color: #1a202c;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Space out content vertically */
+            text-align: center;
+            min-height: 300px; /* Ensure a minimum height for consistency */
+        }
+        .journey-slide p {
+            margin-bottom: 0.5rem;
+        }
+        .journey-slide img {
+            max-height: 80px; /* Adjust logo height */
+            margin-top: auto; /* Push image to bottom if content is short */
+            margin-bottom: 0;
+        }
+        .journey-slide .year {
+            font-size: 2.5rem; /* Text-4xl equivalent */
+            font-weight: bold;
+            color: #1a202c; /* Dark text for year */
+            margin-bottom: 0.5rem;
+        }
+        .journey-slide .description {
+            font-size: 1rem; /* Text-lg equivalent */
+            color: #4a5568; /* Gray-700 equivalent */
+        }
+
+
+        .journey-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            padding: 0.75rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .journey-nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .journey-nav-arrow.left {
+            left: 1rem;
+        }
+
+        .journey-nav-arrow.right {
+            right: 1rem;
+        }
+
+        /* Company Management Section Specific Styles */
+        .management-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: white; /* Ensure white background as per image */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .management-card img {
+            border-radius: 0.75rem; /* Slightly rounded corners for images */
+            width: 100%; /* Make image fill card width */
+            max-width: 200px; /* Limit max width for larger screens */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .management-card h3 {
+            font-size: 1.5rem; /* Text-2xl equivalent */
+            font-weight: 600; /* Semi-bold */
+            color: #1a202c; /* Gray-900 */
+            margin-bottom: 0.25rem;
+        }
+        .management-card .role {
+            font-size: 1rem; /* Text-lg equivalent */
+            color: #EF4444; /* Red-600 */
+            font-weight: 500; /* Medium */
+            margin-bottom: 1rem;
+        }
+        .management-card .read-more-btn {
+            background-color: transparent;
+            color: #22C55E; /* Green-500 */
+            border: 1px solid #22C55E; /* Green-500 border */
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+        }
+        .management-card .read-more-btn:hover {
+            background-color: #22C55E;
             color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .action-button:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .scroll-button {
-            background-color: #4b5563; /* bg-gray-600 */
-        }
-        .scroll-button:hover {
-             background-color: #1f2937; /* bg-gray-800 */
-        }
-        .whatsapp-button {
-            background-color: #25D366;
-        }
-        .whatsapp-button:hover {
-            background-color: #1DA851;
-        }
-        
-        .no-scroll {
-            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen no-scroll">
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-[1000]">
-        <div class="flex flex-col items-center">
-            <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo" class="h-20 w-auto mb-4 animate-pulse rounded-lg">
-            <div class="spinner"></div>
+<body class="bg-white text-gray-800">
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between sticky top-0 z-50 rounded-b-lg">
+        <div class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
+            <img src="https://placehold.co/100x40/EF4444/FFFFFF?text=GreenInfinity" alt="GreenInfinity Logo" class="h-10 rounded">
+            <button id="menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path></svg>
+            </button>
         </div>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md text-gray-800 shadow-sm fixed top-0 left-0 w-full z-50 fade-in">
-        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
-            <a href="index.html" class="mb-4 md:mb-0">
-                <img src="./logo-removebg-preview.jpg" alt="FolkDrive Logo" class="rounded-lg h-14 w-auto">
-            </a>
-            <nav>
-                <ul class="flex flex-wrap justify-center md:space-x-2 text-sm md:text-base">
-                    <li><a href="./index.html" class="flex items-center space-x-2 bg-blue-500 text-white px-3 py-2 rounded-md font-semibold"><i class="fas fa-home"></i> <span>Home</span></a></li>
-                    <li><a href="./services.html" class="flex items-center space-x-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300 px-3 py-2 rounded-md"><i class="fas fa-handshake"></i> <span>Services</span></a></li>
-                    <li><a href="./methodology.html" class="flex items-center space-x-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300 px-3 py-2 rounded-md"><i class="fas fa-rocket"></i> <span>Methodology</span></a></li>
-                    <li><a href="./about.html" class="flex items-center space-x-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300 px-3 py-2 rounded-md"><i class="fas fa-info-circle"></i> <span>About Us</span></a></li>
-                    <li><a href="./contact.html" class="flex items-center space-x-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300 px-3 py-2 rounded-md"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav id="navbar-menu" class="hidden md:flex flex-row md:items-center md:space-x-4 w-full md:w-auto">
+            <a href="#" class="text-gray-700 hover:text-red-600 font-medium transition duration-300 ease-in-out py-1 nav-item">Consumer</a>
+            <a href="#" class="text-gray-700 hover:text-red-600 font-medium transition duration-300 ease-in-out py-1 nav-item">Investors</a>
+            <a href="#" class="text-gray-700 hover:text-red-600 font-medium transition duration-300 ease-in-out py-1 nav-item">About Us</a>
+            <a href="#" class="text-gray-700 hover:text-red-600 font-medium transition duration-300 ease-in-out py-1 nav-item">Inspiration</a>
+            <a href="#" class="text-gray-700 hover:text-red-600 font-medium transition duration-300 ease-in-out py-1 nav-item">Products</a>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow pt-[104px] md:pt-[92px]"> <!-- Adjusted padding for new logo size -->
-        <div class="container mx-auto px-4 pt-12 pb-8"> 
-            <div class="welcome-message text-center fade-in-up">
-                <h3 class="text-4xl md:text-4xl font-extrabold text-gray-900 leading-tight md:leading-snug">Your Partner in <span class="text-blue-600">Sales & Process</span> Efficiency</h3>
-                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">We help you streamline operations, accelerate growth, and achieve your most ambitious goals with tailored strategies and expert implementation.</p>
-            </div>
-        </div>
+    <main>
+        <section class="bg-red-600 text-white py-20 px-6 md:px-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">About GreenInfinity</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto">
+                Driven by innovation and a commitment to excellence, GreenInfinity is a leading name in the wood panel industry, crafting sustainable and high-quality solutions for modern living.
+            </p>
+        </section>
 
-        <!-- Image Slider -->
-        <div class="mb-16 image-slider w-full container mx-auto px-4 fade-in-up">
-            <div class="relative w-full min-h-[50vh] md:min-h-[70vh] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sales Acceleration" class="slide-image active" onerror="this.src='https://placehold.co/1200x600/3B82F6/FFFFFF?text=Sales+Acceleration';">
-                <img src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Growth Achievement" class="slide-image" onerror="this.src='https://placehold.co/1200x600/6366F1/FFFFFF?text=Growth+Achievement';">
-                <img src="https://sitescdn.wearevennture.co.uk/public/paretousa/mediahub/sales%20training-deb753bf-888c-4d37-8db6-85a0c56e3761.jpg" class="slide-image" onerror="this.src='https://placehold.co/1200x600/3B82F6/FFFFFF?text=Sales+Training';">
-                <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="slide-image" alt="Process Efficiency" onerror="this.src='https://placehold.co/1200x600/6366F1/FFFFFF?text=Process+Efficiency';">
-
-                <div class="slider-nav absolute inset-y-0 w-full flex justify-between items-center px-4 z-10">
-                    <button class="arrow prev-arrow bg-white/70 text-gray-800 border-none p-3 rounded-full cursor-pointer text-2xl transition-all duration-300 hover:bg-white hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-300" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
-                    <button class="arrow next-arrow bg-white/70 text-gray-800 border-none p-3 rounded-full cursor-pointer text-2xl transition-all duration-300 hover:bg-white hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-300" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="slider-dots absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-                    <span class="dot w-3 h-3 bg-white/60 rounded-full cursor-pointer transition-all duration-300 hover:bg-white active" aria-label="Go to Slide 1"></span>
-                    <span class="dot w-3 h-3 bg-white/60 rounded-full cursor-pointer transition-all duration-300 hover:bg-white" aria-label="Go to Slide 2"></span>
-                    <span class="dot w-3 h-3 bg-white/60 rounded-full cursor-pointer transition-all duration-300 hover:bg-white" aria-label="Go to Slide 3"></span>
-                    <span class="dot w-3 h-3 bg-white/60 rounded-full cursor-pointer transition-all duration-300 hover:bg-white" aria-label="Go to Slide 4"></span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Features Section -->
-        <section class="main-content-section container mx-auto px-4 py-16 md:py-24 bg-white rounded-2xl shadow-lg fade-in-up">
-            <div class="text-center mb-12 relative pb-4 after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-20 after:h-1 after:bg-blue-500 after:rounded-full">
-                <h2 class="text-gray-900 text-3xl md:text-4xl font-extrabold mb-3">Our Core Features</h2>
-                <p class="text-lg md:text-xl text-gray-600">Discover what makes us different</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature Card 1 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl text-center flex flex-col items-center justify-start transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-200 hover:border-blue-500">
-                    <div class="feature-icon w-20 h-20 text-3xl flex items-center justify-center rounded-full mx-auto mb-6 bg-blue-100 text-blue-600">
-                        <i class="fas fa-rocket"></i>
+        <section class="bg-gray-100 py-16 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row items-start gap-12">
+                    <div class="lg:w-1/2 flex justify-center lg:justify-start">
+                        <img src="https://placehold.co/600x400/22C55E/FFFFFF?text=Greenply+Factory" alt="Greenply Factory" class="rounded-lg shadow-lg w-full h-auto object-cover">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Sales Process Awareness</h3>
-                    <p class="leading-relaxed text-gray-600">Understanding steps from lead generation to closing deals, enabling optimized sales strategies, enhanced customer engagement, and increased conversion rates.</p>
-                </div>
-                <!-- Feature Card 2 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl text-center flex flex-col items-center justify-start transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-200 hover:border-blue-500">
-                    <div class="feature-icon w-20 h-20 text-3xl flex items-center justify-center rounded-full mx-auto mb-6 bg-blue-100 text-blue-600">
-                        <i class="fas fa-tasks"></i>
+                    <div class="lg:w-1/2 text-lg text-gray-700 text-left">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Progressing Sustainably</h2>
+                        <p class="mb-4">
+                            Established in 1994, Greenply Industries Limited (GIL) is a leading Indian interior infrastructure brand, producing superior quality plywood and allied products, decorative veneers, and Medium Density Fibre (MDF) boards. One of the largest interior infrastructure brands in India. At Greenply Industries Limited, we are deeply committed to harness the power of technology and embrace innovative manufacturing practices. These advances allow us to deliver a portfolio of products that stand apart in quality and craftsmanship, continually exceeding the expectations of our customers. Along with a strong emphasis on progress, we constantly strive to enhance our sustainability efforts. We believe, it is our responsibility to safeguard the environment and contribute positively to the communities we serve. Our proactive approach to ESG not only allows us to abide by regulatory standards but, also empowers us to create value for all our stakeholders and contribute to a greener and more sustainable world.
+                        </p>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Strategy & Implementation</h3>
-                    <p class="leading-relaxed text-gray-600">By developing clear plans and executing them effectively, we help organizations drive growth, improve efficiency, and enhance customer satisfaction.</p>
                 </div>
-                <!-- Feature Card 3 -->
-                <div class="feature-card bg-gray-50 p-8 rounded-xl text-center flex flex-col items-center justify-start transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-200 hover:border-blue-500">
-                    <div class="feature-icon w-20 h-20 text-3xl flex items-center justify-center rounded-full mx-auto mb-6 bg-blue-100 text-blue-600">
-                        <i class="fas fa-cog"></i>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    <div class="bg-emerald-600 text-white p-8 rounded-lg shadow-md flex items-center space-x-4">
+                        <svg class="w-12 h-12 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3V7h-2V5h4v10h-2c0 2.76-2.24 5-5 5z"/></svg>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Our Vision</h3>
+                            <p class="text-lg">TO BE THE LEADERS IN INNOVATION, SUSTAINABILITY AND TRENDS IN THE WOODEN DÉCOR INDUSTRY.</p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Evaluation & Tailoring</h3>
-                    <p class="leading-relaxed text-gray-600">Through thorough assessments and customized approaches, we help organizations optimize performance, enhance customer satisfaction, and drive growth.</p>
+                    <div class="bg-gray-200 text-gray-800 p-8 rounded-lg shadow-md flex items-center space-x-4">
+                        <svg class="w-12 h-12 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-4 0c1.66 0 2.99-1.34 2.99-3S13.66 5 12 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-4 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm-1 3H4c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-3v-3c0-2.21-1.79-4-4-4s-4 1.79-4 4v3H7v-3c0-2.21-1.79-4-4-4s-4 1.79-4 4v3z"/></svg>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Our Mission</h3>
+                            <p class="text-lg">TO EMPOWER PEOPLE TO UPGRADE AND TRANSFORM THEIR SPACES TO SUIT THEIR CHANGING NEEDS.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Video Section -->
-        <div class="text-center my-16 md:my-24 media-container-video fade-in-up">
-             <div class="text-center mb-12 relative pb-4 after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:w-20 after:h-1 after:bg-blue-500 after:rounded-full">
-                <h2 class="text-gray-900 text-3xl md:text-4xl font-extrabold mb-3">See Our Process in Action</h2>
+        <section class="bg-white py-16 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="section-header">Our Core Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md core-value-card">
+                        <svg class="w-12 h-12 text-emerald-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Innovation:</h3>
+                        <p class="text-gray-600">Constantly creating products with attributes, features and benefits that are first in the category</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md core-value-card">
+                        <svg class="w-12 h-12 text-emerald-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Customer Centricity:</h3>
+                        <p class="text-gray-600">Everything that we do is keeping customer at the center. Not just understanding customer's current needs but also anticipating their evolving needs and designing products and services to cater to them.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md core-value-card">
+                        <svg class="w-12 h-12 text-emerald-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17c-2.76 0-5-2.24-5-5h2c0 1.66 1.34 3 3 3s3-1.34 3-3V7h-2V5h4v10h-2c0 2.76-2.24 5-5 5z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold mb-2">Inclusivity:</h3>
+                        <p class="text-gray-600">Ensuring that we move ahead together and not alone. Together with our partners, our customers, society and with nature.</p>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-800 aspect-video max-w-4xl mx-auto flex items-center justify-center rounded-xl shadow-2xl overflow-hidden mt-8">
-                <video src="./7947507-hd_1920_1080_30fps.mp4" autoplay loop muted playsinline class="w-full h-full object-cover rounded-xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
-                <div class="text-gray-300 text-lg p-4 items-center justify-center h-full" style="display:none;">Video content coming soon!</div>
+        </section>
+
+        <section class="bg-gray-800 text-white py-16 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="section-header text-white">GreenInfinity Journey</h2>
+                <div class="journey-slider-wrapper">
+                    <button id="journey-left-arrow" class="journey-nav-arrow left">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="journey-right-arrow" class="journey-nav-arrow right">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <div id="journey-slider-container" class="journey-slider-container">
+                        <div class="journey-slide">
+                            <p class="year">1984</p>
+                            <p class="description">Mr. Rajesh Mittal starts operations with a saw mill</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Saw+Mill" alt="Saw Mill Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1988</p>
+                            <p class="description">Setting up 1st plywood unit in Tizit, Nagaland</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Plywood+Unit" alt="Plywood Unit Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1990</p>
+                            <p class="description">Incorporated as company under the name Mittal Laminated Pvt Ltd</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Incorporated" alt="Incorporated Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1994</p>
+                            <p class="description">Transformed into public limited company - Mittal Laminated Limited</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Greenply" alt="Greenply Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1996</p>
+                            <p class="description">Name changed Greenply Industries Limited</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Greenply+Ind." alt="Greenply Industries Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1997</p>
+                            <p class="description">Launch of Greenply brand (Flagship Premium Brand)</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Green+710" alt="Green 710 Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1997 (Contd.)</p>
+                            <p class="description">Plant at Gandhidham, Gujarat</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Plant+Gujarat" alt="Plant Gujarat Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">1999</p>
+                            <p class="description">Decorative Veneer Manufacturing Unit at Bamanbore</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Veneer+Unit" alt="Veneer Unit Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2003</p>
+                            <p class="description">Plywood Manufacturing Unit at Pantnagar, Uttarakhand</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Plywood+M.U." alt="Plywood Manufacturing Unit Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2005</p>
+                            <p class="description">Amalgamation of worthy plywood, now Kriparamour factory</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Amalgamation" alt="Amalgamation Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2007</p>
+                            <p class="description">Acquisition of two plywood units in Gujarat, now in Bamanbore Factory</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Acquisition" alt="Acquisition Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2008</p>
+                            <p class="description">Implementation of SAP and launch of Optima Brand & flush doors</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=OPTIMA+G" alt="Optima G Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2014</p>
+                            <p class="description">Commenced production of Face Veneer in Myanmar</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Myanmar" alt="Myanmar Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2015</p>
+                            <p class="description">Demerger of Decorative Business comprising of Laminates and allied products into Greenlam</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Greenlam" alt="Greenlam Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2017</p>
+                            <p class="description">Face Veneer plant with capacity of 36,000 CBM has commenced production at Gabon in West Africa</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Gabon" alt="Gabon Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2018</p>
+                            <p class="description">Production of Decorative Veneers starts at Bamanbore Plant</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Decorative+Veneers" alt="Decorative Veneers Icon">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2019</p>
+                            <p class="description">Demerger of MDF Business and Pantnagar Plywood Unit into Greenpanel</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Greenpanel" alt="Greenpanel Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2020</p>
+                            <p class="description">Introduction of E-Zero Range</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=E-Zero" alt="E-Zero Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2021</p>
+                            <p class="description">Foray into MDF segment</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Greenply+MDF" alt="Greenply MDF Logo">
+                        </div>
+                        <div class="journey-slide">
+                            <p class="year">2023</p>
+                            <p class="description">Greenply's entry into future fittings with the launch of Greenply Sarnet Pvt. Ltd</p>
+                            <img src="https://placehold.co/80x80/000000/FFFFFF?text=Sarnet" alt="Sarnet Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="bg-white py-16 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="section-header">Company Management</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Management Member 1 -->
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <img src="https://placehold.co/150x150/EF4444/FFFFFF?text=CEO" alt="CEO" class="rounded-full w-32 h-32 object-cover mb-4">
+                        <h3 class="text-xl font-semibold text-gray-900">John Doe</h3>
+                        <p class="text-red-600 font-medium">Chief Executive Officer</p>
+                        <p class="text-gray-700 text-sm mt-2">
+                            John brings over 20 years of experience in the industry, leading GreenInfinity with a vision for innovation and sustainable growth.
+                        </p>
+                    </div>
+                    <!-- Management Member 2 -->
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <img src="https://placehold.co/150x150/EF4444/FFFFFF?text=CTO" alt="CTO" class="rounded-full w-32 h-32 object-cover mb-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Jane Smith</h3>
+                        <p class="text-red-600 font-medium">Chief Technology Officer</p>
+                        <p class="text-gray-700 text-sm mt-2">
+                            Jane is a pioneer in sustainable manufacturing technologies, driving our R&D efforts to new heights.
+                        </p>
+                    </div>
+                    <!-- Management Member 3 -->
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <img src="https://placehold.co/150x150/EF4444/FFFFFF?text=CFO" alt="CFO" class="rounded-full w-32 h-32 object-cover mb-4">
+                        <h3 class="text-xl font-semibold text-gray-900">Robert Johnson</h3>
+                        <p class="text-red-600 font-medium">Chief Financial Officer</p>
+                        <p class="text-gray-700 text-sm mt-2">
+                            Robert ensures our financial stability and strategic investments, fostering long-term value for stakeholders.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-gray-100 py-16 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="section-header">GreenInfinity at a Glance</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-5xl font-bold text-red-600 mb-2">50+</p>
+                        <p class="text-lg font-medium text-gray-800">Years of Experience</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-5xl font-bold text-red-600 mb-2">10+</p>
+                        <p class="text-lg font-medium text-gray-800">Manufacturing Units</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-5xl font-bold text-red-600 mb-2">2000+</p>
+                        <p class="text-lg font-medium text-gray-800">Strong Workforce</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <p class="text-5xl font-bold text-red-600 mb-2">1M+</p>
+                        <p class="text-lg font-medium text-gray-800">Happy Customers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white py-16 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="section-header">Awards & Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="https://placehold.co/100x100/A78BFA/FFFFFF?text=Award+1" alt="Award 1" class="mx-auto mb-4 rounded">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Best Sustainable Practices</h3>
+                        <p class="text-gray-700 text-sm">Awarded for our pioneering efforts in environmental stewardship (2023).</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="https://placehold.co/100x100/8B5CF6/FFFFFF?text=Cert+1" alt="Certification 1" class="mx-auto mb-4 rounded">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">ISO 9001:2015 Certified</h3>
+                        <p class="text-gray-700 text-sm">Recognized for our rigorous quality management systems.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="https://placehold.co/100x100/7C3AED/FFFFFF?text=Award+2" alt="Award 2" class="mx-auto mb-4 rounded">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Innovation in Design</h3>
+                        <p class="text-gray-700 text-sm">Honored for our innovative product designs and aesthetic appeal (2022).</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                        <img src="https://placehold.co/100x100/6D28D9/FFFFFF?text=Cert+2" alt="Certification 2" class="mx-auto mb-4 rounded">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">FSC Certified</h3>
+                        <p class="text-gray-700 text-sm">Ensuring responsible forestry and ethical wood sourcing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10 px-6 md:px-12 rounded-t-lg">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-red-400">Products</h4>
+                <ul>
+                    <li><h5 class="footer-list-header">Categories</h5></li>
+                    <ul class="ml-4 text-sm text-gray-300 space-y-1">
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Plywood & Blockboard</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Doors</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Veneers</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">MDF</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Speciality Plywood</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">PVC</a></li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-red-400">Speciality Feature</h4>
+                <ul>
+                    <ul class="ml-4 text-sm text-gray-300 space-y-1">
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Water Proof</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Fire Retardant</a></li>
+                        <li class="footer-list-item"><a href="#" class="hover:text-red-200">Zero Emission</a></li>
+                    </ul>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-red-400">Brands</h4>
+                <ul class="ml-4 text-sm text-gray-300 space-y-1">
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">GreenInfinity</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Ecotec</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Optima G</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">GreenInfinity Ndure</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Wood Crrest</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">GreenInfinity MDF</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-red-400">Furniture Type</h4>
+                <ul class="ml-4 text-sm text-gray-300 space-y-1">
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Chair</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Study Table</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Sofa</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200">Bed</a></li>
+                </ul>
+            </div>
+            <div class="md:text-right">
+                <h4 class="text-lg font-semibold mb-4 text-red-400">Quick Links & More</h4>
+                <ul class="ml-4 md:ml-0 text-sm text-gray-300 space-y-1 md:text-right">
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">About Us</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">Contact Us</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">Investors</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">Sustainability</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">Blogs</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">FAQ</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">Privacy Policy</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">Disclaimer</a></li>
+                    <li class="footer-list-item"><a href="#" class="hover:text-red-200 transition-colors duration-200 ease-in-out text-sm">HKS Award</a></li>
+                </ul>
             </div>
         </div>
-    </main>
-    
-    <!-- Fixed Action Buttons -->
-    <div class="fixed-action-btn fade-in">
-        <button id="scroll-to-top" class="action-button scroll-button" aria-label="Scroll to Top" style="display: none;">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        <button id="scroll-to-bottom" class="action-button scroll-button" aria-label="Scroll to Bottom">
-            <i class="fas fa-arrow-down"></i>
-        </button>
-        <a href="https://wa.me/919916245531" target="_blank" class="action-button whatsapp-button" aria-label="Chat on WhatsApp">
-            <i class="fab fa-whatsapp text-2xl"></i>
-        </a>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 mt-auto fade-in">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
-                <!-- Footer Column 1: Brand -->
-                <div>
-                    <a href="index.html" class="inline-block mb-4 text-3xl font-extrabold text-white transition-colors duration-300">Folk<span class="text-blue-500">drive</span></a>
-                    <p class="mt-2 text-sm leading-relaxed text-gray-400">Empowering Sales Teams to unlock their full potential, enabling them to drive results and exceed targets.</p>
-                </div>
-                <!-- Footer Column 2: Quick Links -->
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-white tracking-wider">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="./about.html" class="flex items-center justify-center md:justify-start space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"><i class="fas fa-info-circle w-4"></i> <span>About Us</span></a></li>
-                        <li><a href="./services.html" class="flex items-center justify-center md:justify-start space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"><i class="fas fa-handshake w-4"></i> <span>Services</span></a></li>
-                        <li><a href="./methodology.html" class="flex items-center justify-center md:justify-start space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"><i class="fas fa-rocket w-4"></i> <span>Methodology</span></a></li>
-                    </ul>
-                </div>
-                <!-- Footer Column 3: Contact -->
-                <div>
-                    <h4 class="font-bold text-lg mb-4 text-white tracking-wider">Contact</h4>
-                    <ul class="space-y-2">
-                        <li><a href="mailto:info@folkdrive.com" class="flex items-center justify-center md:justify-start space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"><i class="fas fa-envelope w-4"></i> <span>info@folkdrive.com</span></a></li>
-                        <li><a href="tel:+919916245531" class="flex items-center justify-center md:justify-start space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"><i class="fas fa-phone w-4"></i> <span>+919916245531</span></a></li>
-                        <li><a href="./contact.html" class="flex items-center justify-center md:justify-start space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"><i class="fas fa-address-book w-4"></i> <span>Contact Form</span></a></li>
-                    </ul>
-                </div>
+        <div class="flex flex-col items-center justify-center mt-8">
+            <h4 class="text-lg font-semibold mb-4 text-red-400">Follow us on</h4>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors duration-200 ease-in-out">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.505 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors duration-200 ease-in-out">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 20.424a10.875 10.875 0 0014.28 0 10.875 10.875 0 008.232-10.424V7.5a.5.5 0 00-.5-.5h-2.875a.5.5 0 00-.5.5v2.5a.5.5 0 01-.5.5h-2.5a.5.5 0 01-.5-.5v-2.5a.5.5 0 00-.5-.5H8.5a.5.5 0 00-.5.5v2.5a.5.5 0 01-.5.5h-2.5a.5.5 0 01-.5-.5v-2.5a.5.5 0 00-.5-.5H.5a.5.5 0 00-.5.5v2.5A10.875 10.875 0 00.057 20.424zM12 21a9 9 0 110-18 9 9 0 010 18z"></path><path fill-rule="evenodd" d="M10.75 11.25a.75.75 0 00-1.5 0v3.5a.75.75 0 001.5 0v-3.5zM13.25 11.25a.75.75 0 00-1.5 0v3.5a.75.75 0 001.5 0v-3.5z" clip-rule="evenodd"></path></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors duration-200 ease-in-out">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.234 2.76 7.828 6.593 9.117.48.087.653-.208.653-.466v-1.603c-2.684.582-3.252-1.29-3.252-1.29-.44-.946-.902-1.196-.902-1.196-.738-.504.056-.494.056-.494.815.057 1.243.838 1.243.838.724 1.24 1.895.88 2.355.676.073-.526.284-.88.517-1.077-1.8-.204-3.69-1.008-3.69-4.004 0-.886.315-1.61.83-2.176-.083-.204-.36-.968.077-2.148 0 0 .676-.217 2.21.829a7.067 7.067 0 011.884-.254c.635 0 1.27.085 1.884.254 1.534-1.046 2.21-.829 2.21-.829.437 1.18.158 1.944.077 2.148.515.566.83 1.29.83 2.176 0 2.997-1.894 3.798-3.696 4.002.29.25.55.738.55 1.488v2.203c0 .258.172.553.658.466C19.24 19.828 22 16.991 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors duration-200 ease-in-out">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.297 10.963a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1h-12a1 1 0 01-1-1v-2z"></path><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.75 8.25a.75.75 0 00-.75-.75h-3.5a.75.75 0 00-.75.75v3.5a.75.75 0 00.75.75h3.5a.75.75 0 00.75-.75v-3.5z" clip-rule="evenodd"></path></svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors duration-200 ease-in-out">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.331 6.81a.5.5 0 00-.5-.5h-8.662a.5.5 0 00-.5.5v6.38a.5.5 0 00.5.5h8.662a.5.5 0 00.5-.5V8.81z"></path><path fill-rule="evenodd" d="M15.5 12a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zM12 10a2 2 0 100 4 2 2 0 000-4z" clip-rule="evenodd"></path></svg>
+                </a>
             </div>
-            <div class="text-center text-sm border-t border-gray-700 pt-8">
-                <p class="text-gray-400">&copy; <span id="currentYear"></span> Folkdrive. All Rights Reserved.</p>
-            </div>
+        </div>
+        <div class="text-center text-sm text-gray-400 mt-8">
+            Copyright &copy; 2025 GreenInfinity.com. All Rights Reserved<br>
+            Digital agency Tonic Worldwide
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Global Variables & Elements ---
-            const slides = document.querySelectorAll('.slide-image');
-            const dots = document.querySelectorAll('.dot');
-            const prevArrow = document.querySelector('.prev-arrow');
-            const nextArrow = document.querySelector('.next-arrow');
-            const scrollToTopBtn = document.getElementById('scroll-to-top');
-            const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
-            const preloader = document.getElementById('preloader');
-            const body = document.body;
-            
-            let currentSlide = 0;
-            let slideInterval;
+        // JavaScript for mobile menu toggle (same as front page)
+        const menuButton = document.getElementById('menu-button');
+        const navbarMenu = document.getElementById('navbar-menu');
 
-            // --- Slider Logic ---
-            const showSlide = (index) => {
-                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-                currentSlide = index;
-            };
-
-            const nextSlide = () => showSlide((currentSlide + 1) % slides.length);
-            const prevSlide = () => showSlide((currentSlide - 1 + slides.length) % slides.length);
-            
-            const startSlider = () => {
-                clearInterval(slideInterval);
-                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-            };
-            
-            // Slider event listeners
-            nextArrow.addEventListener('click', () => {
-                nextSlide();
-                startSlider(); // Restart interval on manual navigation
+        if (menuButton && navbarMenu) {
+            menuButton.addEventListener('click', () => {
+                navbarMenu.classList.toggle('hidden');
+                navbarMenu.classList.toggle('flex');
+                navbarMenu.classList.toggle('flex-col');
             });
+        }
 
-            prevArrow.addEventListener('click', () => {
-                prevSlide();
-                startSlider(); // Restart interval
-            });
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index);
-                    startSlider(); // Restart interval
-                });
-            });
+        // GreenInfinity Journey Horizontal Scroll Slider Logic
+        const journeySliderContainer = document.getElementById('journey-slider-container');
+        const journeyLeftArrow = document.getElementById('journey-left-arrow');
+        const journeyRightArrow = document.getElementById('journey-right-arrow');
 
-            // --- Scroll Button Logic ---
-            const handleScroll = () => {
-                const scrollY = window.scrollY;
-                const pageHeight = document.body.offsetHeight;
-                const viewportHeight = window.innerHeight;
+        const journeySlides = document.querySelectorAll('.journey-slider-container .journey-slide');
+        const slideWidth = 300 + 24; // 300px (width) + 24px (gap, which is 1.5rem)
 
-                // Show/hide "scroll to top"
-                if (scrollY > 300) {
-                    scrollToTopBtn.style.display = 'flex';
+        let journeyAutoScrollInterval;
+        const journeyScrollIntervalTime = 4000; // 4 seconds
+
+        function startJourneyAutoScroll() {
+            clearInterval(journeyAutoScrollInterval); // Clear any existing interval
+            journeyAutoScrollInterval = setInterval(() => {
+                // If at the end, scroll back to the beginning
+                if (journeySliderContainer.scrollLeft + journeySliderContainer.clientWidth >= journeySliderContainer.scrollWidth - 1) {
+                    journeySliderContainer.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
-                    scrollToTopBtn.style.display = 'none';
+                    journeySliderContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
                 }
+            }, journeyScrollIntervalTime);
+        }
 
-                // Show/hide "scroll to bottom"
-                if (pageHeight - (scrollY + viewportHeight) > 300) {
-                    scrollToBottomBtn.style.display = 'flex';
-                } else {
-                    scrollToBottomBtn.style.display = 'none';
-                }
-            };
-            
-            scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-            scrollToBottomBtn.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
-            window.addEventListener('scroll', handleScroll);
+        // Manual navigation for Journey Slider
+        if (journeyLeftArrow) {
+            journeyLeftArrow.addEventListener('click', () => {
+                clearInterval(journeyAutoScrollInterval); // Stop auto-scroll on manual interaction
+                journeySliderContainer.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+                startJourneyAutoScroll(); // Restart auto-scroll
+            });
+        }
 
-            // --- Page Load & Initialization ---
-            const init = () => {
-                // Preloader & Content Animation
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    body.classList.remove('no-scroll');
-                    
-                    document.querySelector('header').classList.add('active-fade-in');
-                    document.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('active-animation'));
-                    document.querySelector('.fixed-action-btn').classList.add('active-animation');
-                    document.querySelector('footer').classList.add('active-fade-in');
+        if (journeyRightArrow) {
+            journeyRightArrow.addEventListener('click', () => {
+                clearInterval(journeyAutoScrollInterval); // Stop auto-scroll on manual interaction
+                journeySliderContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                startJourneyAutoScroll(); // Restart auto-scroll
+            });
+        }
 
-                    setTimeout(() => preloader.style.display = 'none', 700);
-                }, 1000);
-
-                // Initialize slider
-                showSlide(0);
-                startSlider();
-                
-                // Initialize scroll buttons
-                handleScroll();
-
-                // Set footer year
-                document.getElementById('currentYear').textContent = new Date().getFullYear();
-            };
-            
-            // Run initialization
-            init();
+        // Start auto-scroll on load
+        window.addEventListener('load', () => {
+            startJourneyAutoScroll();
         });
     </script>
 </body>
